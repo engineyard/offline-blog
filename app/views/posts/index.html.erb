@@ -1,0 +1,21 @@
+<div id="blog_posts"></div>
+
+
+
+
+<%= link_to 'New Post', new_post_path %>
+
+
+<script id="post_template" type="text/html">
+    <div>
+		<h2>${post.name}</h2>
+		<p>${post.body}</p>
+	</div>
+</script>
+
+<script type="text/javascript">      
+			$.retrieveJSON('/posts.json', function(data) {
+				$( "#blog_posts" ).html($( "#post_template" ).tmpl( data ));
+		
+			});
+</script>
